@@ -75,17 +75,6 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker fzf sudo z colored-man-pages)
 
-# PATH: keep entries unique; (N) skips any directory that doesn't exist yet.
-typeset -U path
-path=(
-  $HOME/.local/bin(N)
-  $HOME/bin(N)
-  $HOME/.cargo/bin(N)
-  $HOME/go/bin(N)
-  $path
-)
-export PATH
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -94,14 +83,6 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-export VISUAL="$EDITOR"
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -118,4 +99,9 @@ export VISUAL="$EDITOR"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+# Agnoster shows the venv itself, so stop activate from adding it to the prompt
+VIRTUAL_ENV_DISABLE_PROMPT=1
+
+[[ -f ~/.shell_common ]] && source ~/.shell_common
+
+alias reload='exec zsh'

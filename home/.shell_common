@@ -1,0 +1,29 @@
+# ~/.shell_common - sourced from ~/.zshrc and ~/.bashrc. Keep it valid in both.
+
+# PATH: keep entries unique and skip any directory that doesn't exist yet.
+# Listed in reverse, because each entry goes on the front.
+for dir in "$HOME/go/bin" "$HOME/.cargo/bin" "$HOME/bin" "$HOME/.local/bin"; do
+  [ -d "$dir" ] || continue
+  case ":$PATH:" in
+    *":$dir:"*) ;;
+    *) PATH="$dir:$PATH" ;;
+  esac
+done
+unset dir
+export PATH
+
+# Preferred editor for local and remote sessions
+if [ -n "$SSH_CONNECTION" ]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+export VISUAL="$EDITOR"
+
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+# Last, so its bin comes first on PATH. A nested shell inherits the parent's
+# venv, and activating again would add a second PATH entry.
+if [ -z "$VIRTUAL_ENV" ] && [ -f ~/.default/bin/activate ]; then
+  . ~/.default/bin/activate
+fi
