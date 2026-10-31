@@ -1,0 +1,4 @@
+claude-desktop
+google-chrome
+postman-bin
+visual-studio-code-bin

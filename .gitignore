@@ -1,0 +1,21 @@
+# Second line of defence behind the denylist in scripts/adopt.sh. Keep them in sync.
+
+# Secrets
+home/.ssh/
+home/.gnupg/
+home/.claude/.credentials.json
+home/.claude.json*
+home/.config/kdeconnect/
+home/.config/Claude/
+home/.config/libaccounts-glib/
+*.pem
+*.key
+*id_rsa*
+*id_ed25519*
+*id_ecdsa*
+
+# History and state
+*_history
+home/.z
+home/.zcompdump*
+*.bak-*
