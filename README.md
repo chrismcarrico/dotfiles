@@ -23,7 +23,7 @@ Then open a new terminal, or run `exec zsh`. The script is safe to re-run, and w
 | `scripts/link.sh` | Symlinks each file in `home/` into `$HOME`. Existing files are moved to `<file>.bak-<timestamp>`. |
 | `scripts/set-shell.sh` | Makes zsh the login shell if it isn't already. |
 
-The [dev-setup](https://github.com/chrismcarrico/dev-setup) Ansible playbook clones this repo to `~/.dotfiles` and runs `setup.sh`. With no terminal attached, the sudo and `chsh` steps print what to do by hand instead of prompting.
+The [dev-setup](https://github.com/chrismcarrico/dev-setup) Ansible playbook clones this repo to `~/Source/dotfiles` and runs `setup.sh`. With no terminal attached, the sudo and `chsh` steps print what to do by hand instead of prompting.
 
 ## What's included
 
